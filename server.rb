@@ -18,6 +18,9 @@ opt_parser = OptionParser.new do |opt|
     options[:complexity] = complexity
   end
 
+  opt.on_tail("-s","--special","If you want special characters") do |specialChar|
+    options[:specialChar] = specialChar
+  end
 end
 
 opt_parser.parse!
@@ -28,13 +31,19 @@ else
   @times = options[:complexity].to_i
 end
 
+if options[:specialChar] == nil
+  @specialChar = false
+else
+  @specialChar = true
+end
+
 case ARGV[0]
   when "password"
-    STDOUT.puts Bxm::Password.rand_key(@times).to_s
+    STDOUT.puts Bxm::Password.rand_key(@times,"words",@specialChar).to_s
   when "palabras"
-    STDOUT.puts Bxm::Password.rand_key(@times,"palabras").to_s
+    STDOUT.puts Bxm::Password.rand_key(@times,"palabras",@specialChar).to_s
   when "worts"
-    STDOUT.puts Bxm::Password.rand_key(@times,"worts").to_s
+    STDOUT.puts Bxm::Password.rand_key(@times,"worts",@specialChar).to_s
   else
     puts opt_parser
 end

@@ -49,20 +49,11 @@ describe Bxm do
       puts "Random bxm key is #{result}"
   end
 
-  # it 'I am able to generate a 50 random secure keys in french' do
-  #   puts "FRENCH !!!!!!!!!!!!"
-  #   list_psw=[]
-  #   for x in 1..50
-  #     i=0
-  #     result = Bxm::Password.rand_key(4,'mots').to_s
-  #     expect(list_psw.to_s).to_not match(result)
-  #     list_psw<<result
-  #     puts "Random bxm key is #{result}"
-  #   end
-  # end
-
-
-
-
+  it 'I am able to generate a password with special character' do
+    puts "Special Characters !!!!!!!!!!!!"
+    list_psw=[]
+    result = Bxm::Password.rand_key(5,'words',true).to_s
+    puts "Random bxm key is #{result}"
+  end
 
 end

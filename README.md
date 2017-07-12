@@ -29,11 +29,11 @@ from some of the most common words used in the english language
 current version only supports english but a plan to support other languages will be available in the future
 Example:
     Bxm::Password.rand_key(4,words)
-=> "74CloudRedRedRed"
+=> "74-Cloud-Red-Red-Red"
     Bxm::Password.rand_key(4,palabras)
-=> "57SemanaCasoEstupendoHecho"
+=> "57-Semana-Caso-Estupendo-Hecho"
     Bxm::Password.rand_key(4,wort)
-=> "90RegierungHandWocheAuge"
+=> "90-Regierung-Hand-Woche-Auge"
   
 ## Development
 

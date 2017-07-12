@@ -18,7 +18,8 @@ Gem::Specification.new do |spec|
   spec.extra_rdoc_files = ['lib/words.csv',
                            'lib/palabras.csv',
                            'lib/worts.csv',
-                            'lib/names.csv']
+                           'lib/names.csv',
+                           'lib/special.csv']
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]

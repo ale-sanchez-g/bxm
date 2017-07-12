@@ -1,4 +1,3 @@
-require 'rest-client'
 require 'csv'
 require 'yaml'
 
@@ -9,18 +8,19 @@ module Bxm
   #  current version only supports english but a plan to support other languages will be available in the future
   # Example:
   #      Bxm::Password.rand_key(4,words)
-  # => "74CloudRedRedRed"
+  # => "50-Joshua-Thing-Work-First"
   #      Bxm::Password.rand_key(4,palabras)
-  # => "57SemanaCasoEstupendoHecho"
-  #      Bxm::Password.rand_key(4,wort)
-  # => "90RegierungHandWocheAuge"
+  # => "86-Joseph-Diferente-Gran-Siguiente"
+  #      Bxm::Password.rand_key(4,worts)
+  # => "69-Harry-Alt-Arbeiten-Weg"
   #
   class Password
-      def self.rand_key(n=1,leng='words',name='names')
+      def self.rand_key(n=1,leng='words', special=false)
 
         lib = File.expand_path(File.dirname(__FILE__), "words.csv")
         wrds=CSV.read(lib+"/#{leng}.csv")
-        nms=CSV.read(lib+"/#{name}.csv")
+        nms=CSV.read(lib+"/names.csv")
+        spcl=CSV.read(lib+"/special.csv")
 
         super_key = [*('0'..'9')].shuffle[0,2].join
         super_key = super_key + '-' + [*(nms)].shuffle[0,1].join.capitalize
@@ -28,7 +28,15 @@ module Bxm
         for i in 2..n
           super_key = super_key + '-' + [*(wrds)].shuffle[0,1].join.capitalize
         end
-        return super_key
+
+        if special == true
+          for b in 1..n
+            super_key = super_key.sub! '-', [*(spcl)].shuffle[0,1].join
+          end
+          return super_key
+        else
+          return super_key
+        end
       end
     end
 end
