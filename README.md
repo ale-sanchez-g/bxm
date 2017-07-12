@@ -32,9 +32,11 @@ Example:
 => "74-Cloud-Red-Red-Red"
     Bxm::Password.rand_key(4,palabras)
 => "57-Semana-Caso-Estupendo-Hecho"
-    Bxm::Password.rand_key(4,wort)
+    Bxm::Password.rand_key(4,worts)
 => "90-Regierung-Hand-Woche-Auge"
-  
+    Bxm::Password.rand_key(4,worts,true)
+=> "90#Regierung/Hand^Woche!Auge"  
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests.
